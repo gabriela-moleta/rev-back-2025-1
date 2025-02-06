@@ -1,9 +1,14 @@
 import { Router } from "express";
+import studentsRouter from "./students.routes";
+import usersRouter from "./users.routes";
 
-const routes = Router();
+const router = Router();
 
-routes.get("/", (req, res) => {
+router.get("/", (req, res) => {
     return res.status(200).json({ message: "Vai Corinthians!"});
 })
 
-export default routes;
+router.use("/students", studentsRouter);
+router.use("/users", usersRouter);
+
+export default { router };
